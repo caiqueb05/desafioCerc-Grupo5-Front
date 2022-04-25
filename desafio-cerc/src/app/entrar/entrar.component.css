@@ -1,0 +1,37 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.imagemLogo {
+  min-height: 5vh;
+  height: 150px;
+  width: 55%;
+
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg {
+  height: 65%;
+  width: 110%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+input {
+  background-color: #f1f4fa;
+  border: 0;
+  border-radius: 5px;
+}
+
+#tipo {
+  background-color: #f1f4fa;
+  border: 0;
+  border-radius: 5px;
+}
