@@ -1,8 +1,10 @@
-* {
-  margin-left: 2em;
-  background-color: #f1f4fa;
-}
 
 body {
-  width: 100vw;
+  width: 99.2vw;
+  padding-left: 12vw;
+  padding-right: 0;
+  background-color: #f1f4fa;
+
 }
+
+/*  */

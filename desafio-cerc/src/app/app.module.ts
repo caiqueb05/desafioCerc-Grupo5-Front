@@ -7,6 +7,7 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MenuLatEsqComponent } from './menu-lat-esq/menu-lat-esq.component';
 import { PainelComponent } from './painel/painel.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PainelComponent } from './painel/painel.component';
     CadastrarComponent,
     EntrarComponent,
     MenuLatEsqComponent,
-    PainelComponent
+    PainelComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
