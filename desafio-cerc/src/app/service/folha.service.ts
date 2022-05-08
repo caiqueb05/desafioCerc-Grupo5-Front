@@ -24,15 +24,15 @@ export class FolhaService {
   }
 
   getAllFolhas(): Observable<FolhaDePagamentoDTO[]>{
-    return this.http.get<FolhaDePagamentoDTO[]>('https://paymentsregister.herokuapp.com8080/api/v1/folha/todas', this.token)
+    return this.http.get<FolhaDePagamentoDTO[]>('https://paymentsregister.herokuapp.com/api/v1/folha/todas', this.token)
   }
 
   postFolha(folha: FolhaDePagamentoDTO): Observable<FolhaDePagamentoDTO>{
-    return this.http.post<FolhaDePagamentoDTO>('https://paymentsregister.herokuapp.com8080/api/v1/folha', folha, this.token)
+    return this.http.post<FolhaDePagamentoDTO>('https://paymentsregister.herokuapp.com/api/v1/folha', folha, this.token)
   }
 
   /* getByIdFuncionario(id: number): Observable<FolhaDePagamentoDTO>{
-    return this.http.get<FolhaDePagamentoDTO>(`https://paymentsregister.herokuapp.com8080/api/v1/folha/${id}`, this.token)
+    return this.http.get<FolhaDePagamentoDTO>(`https://paymentsregister.herokuapp.com/api/v1/folha/${id}`, this.token)
   } */
 
 }

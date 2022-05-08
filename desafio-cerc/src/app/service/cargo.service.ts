@@ -22,21 +22,21 @@ export class CargoService {
 
   getByIdCargo(id: number): Observable<Cargo> {
     return this.http.get<Cargo>(
-      `https://paymentsregister.herokuapp.com8080/api/v1/cargo/${id}`,
+      `https://paymentsregister.herokuapp.com/api/v1/cargo/${id}`,
       this.token
     );
   }
 
   getAllCargos(): Observable<Cargo[]> {
     return this.http.get<Cargo[]>(
-      'https://paymentsregister.herokuapp.com8080/api/v1/cargo/todos',
+      'https://paymentsregister.herokuapp.com/api/v1/cargo/todos',
       this.token
     );
   }
 
   postCargo(Cargo: Cargo): Observable<Cargo> {
     return this.http.post<Cargo>(
-      'https://paymentsregister.herokuapp.com8080/api/v1/cargo',
+      'https://paymentsregister.herokuapp.com/api/v1/cargo',
       Cargo,
       this.token
     );
