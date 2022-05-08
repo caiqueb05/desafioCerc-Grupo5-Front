@@ -24,14 +24,14 @@ export class AuthService {
 
   entrar(userLoginDTO: CredenciaisDTO): Observable<CredenciaisDTO> {
     return this.http.put<CredenciaisDTO>(
-      'http://localhost:8080/api/v1/usuario/credenciais',
+      'https://paymentsregister.herokuapp.com/api/v1/usuario/credenciais',
       userLoginDTO
     );
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(
-      'http://localhost:8080/api/v1/usuario/salvar',
+      'https://paymentsregister.herokuapp.com//api/v1/usuario/salvar',
       usuario
     );
   }
