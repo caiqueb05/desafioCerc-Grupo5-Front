@@ -31,7 +31,7 @@ export class AuthService {
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(
-      'https://paymentsregister.herokuapp.com//api/v1/usuario/salvar',
+      'https://paymentsregister.herokuapp.com/api/v1/usuario/salvar',
       usuario
     );
   }
