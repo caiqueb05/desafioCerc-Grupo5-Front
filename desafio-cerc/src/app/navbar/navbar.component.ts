@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  nome = environment.nome
+  foto = environment.linkFoto
+  cargo = environment.cargo
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    public authService: AuthService
+  ) { }
+
+  ngOnInit() {
+
+  }
+
+  show(){
+    /* $('#dropdownMenuLink').on('show.bs.dropdown', function () {
+      // do something...
+    }) */
   }
 
 }

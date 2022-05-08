@@ -58,6 +58,7 @@
                             title="Example Tooltip"
                             data-placement="bottom"
                             class="btn-shadow mr-3 btn btn-dark"
+                            (click)="getAllFuncionarios()"
                           >
                             <i class="fa fa-star"></i>
                           </button>
@@ -218,6 +219,7 @@
                                   data-toggle="modal"
                                   data-target="#adicionarCargo"
                                   aria-expanded="false"
+                                  (click)="getAllCargos()"
                                 >
                                   Cargo
                                   <i
@@ -232,6 +234,7 @@
                                   data-toggle="modal"
                                   data-target="#adicionarFuncionario"
                                   aria-expanded="false"
+                                  (click)="getAllCargos()"
                                 >
                                   Funcionário
                                   <i
@@ -252,13 +255,15 @@
                                   <th>Nome</th>
                                   <th class="text-center">Email</th>
                                   <th class="text-center">Cargo</th>
-                                  <th class="text-center">Qtd Horas</th>
+                                  <!-- <th class="text-center">Qtd Horas</th> -->
                                   <th class="text-center">Ações</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td class="text-center text-muted">#345</td>
+                                <tr *ngFor="let item of listaFuncionarios">
+                                  <td class="text-center text-muted">
+                                    {{ item.cpf }}
+                                  </td>
                                   <td>
                                     <div class="widget-content p-0">
                                       <div class="widget-content-wrapper">
@@ -267,24 +272,28 @@
                                             <img
                                               width="40"
                                               class="rounded-circle"
-                                              src="assets/img/Group 465.png"
+                                              src="{{ item.linkFoto }}"
                                               alt=""
                                             />
                                           </div>
                                         </div>
                                         <div class="widget-content-left flex2">
                                           <div class="widget-heading">
-                                            John Doe
+                                            {{ item.nome }}
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </td>
                                   <td class="text-center">
-                                    john.doe@payments.com
+                                    {{ item.email }}
                                   </td>
-                                  <td class="text-center">Desenvolvedor</td>
-                                  <td class="text-center">100h</td>
+                                  <td class="text-center">
+                                    {{ item.cargo.nome }}
+                                  </td>
+                                  <!-- <td class="text-center">
+                                    {{ folhaPagamento.horasTrabalhadas }}
+                                  </td> -->
                                   <td class="text-center">
                                     <button
                                       class="btn btn-outline-success mr-1"
@@ -293,6 +302,7 @@
                                       data-toggle="modal"
                                       data-target="#visualizarFolha"
                                       aria-expanded="false"
+                                      (click)="findByIdFuncionario(item.idFuncionario)"
                                     >
                                       Folha Pgt
                                       <i
@@ -305,197 +315,9 @@
                                       type="button"
                                       id="dropdownMenuButton"
                                       data-toggle="modal"
-                                      data-target="#editarTema"
+                                      data-target="#editarFuncionario"
                                       aria-expanded="false"
-                                    >
-                                      Editar
-                                      <i class="fa fa-pencil-square-o"></i>
-                                    </button>
-                                    <button
-                                      class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
-                                    >
-                                      Excluir
-                                      <i class="pe-7s-trash btn-icon-wrapper">
-                                      </i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="text-center text-muted">#347</td>
-                                  <td>
-                                    <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-                                          <div class="widget-content-left">
-                                            <img
-                                              width="40"
-                                              class="rounded-circle"
-                                              src="assets/img/Group 466.png"
-                                              alt=""
-                                            />
-                                          </div>
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                          <div class="widget-heading">
-                                            Ruben Tillman
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td class="text-center">
-                                    ruben.tillman@payments.com
-                                  </td>
-                                  <td class="text-center">Analista Contábil</td>
-                                  <td class="text-center">120h</td>
-                                  <td class="text-center">
-                                    <button
-                                      class="btn btn-outline-success mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#visualizarFolha"
-                                      aria-expanded="false"
-                                    >
-                                      Folha Pgt
-                                      <i
-                                        class="fa fa-file"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </button>
-                                    <button
-                                      class="btn btn-outline-primary mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#editarTema"
-                                      aria-expanded="false"
-                                    >
-                                      Editar
-                                      <i class="fa fa-pencil-square-o"></i>
-                                    </button>
-                                    <button
-                                      class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
-                                    >
-                                      Excluir
-                                      <i class="pe-7s-trash btn-icon-wrapper">
-                                      </i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="text-center text-muted">#321</td>
-                                  <td>
-                                    <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-                                          <div class="widget-content-left">
-                                            <img
-                                              width="40"
-                                              class="rounded-circle"
-                                              src="assets/img/Group 469.png"
-                                              alt=""
-                                            />
-                                          </div>
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                          <div class="widget-heading">
-                                            Elliot Huber
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td class="text-center">
-                                    elliot.huber@payments.com
-                                  </td>
-                                  <td class="text-center">Gerente</td>
-                                  <td class="text-center">90h</td>
-                                  <td class="text-center">
-                                    <button
-                                      class="btn btn-outline-success mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#visualizarFolha"
-                                      aria-expanded="false"
-                                    >
-                                      Folha Pgt
-                                      <i
-                                        class="fa fa-file"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </button>
-                                    <button
-                                      class="btn btn-outline-primary mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#editarTema"
-                                      aria-expanded="false"
-                                    >
-                                      Editar
-                                      <i class="fa fa-pencil-square-o"></i>
-                                    </button>
-                                    <button
-                                      class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
-                                    >
-                                      Excluir
-                                      <i class="pe-7s-trash btn-icon-wrapper">
-                                      </i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="text-center text-muted">#55</td>
-                                  <td>
-                                    <div class="widget-content p-0">
-                                      <div class="widget-content-wrapper">
-                                        <div class="widget-content-left mr-3">
-                                          <div class="widget-content-left">
-                                            <img
-                                              width="40"
-                                              class="rounded-circle"
-                                              src="assets/img/Group 472.png"
-                                              alt=""
-                                            />
-                                          </div>
-                                        </div>
-                                        <div class="widget-content-left flex2">
-                                          <div class="widget-heading">
-                                            Vinnie Wagstaff
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td class="text-center">
-                                    vinnie.wagstaff@payments.com
-                                  </td>
-                                  <td class="text-center">Diretor</td>
-                                  <td class="text-center">130h</td>
-                                  <td class="text-center">
-                                    <button
-                                      class="btn btn-outline-success mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#visualizarFolha"
-                                      aria-expanded="false"
-                                    >
-                                      Folha Pgt
-                                      <i
-                                        class="fa fa-file"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </button>
-                                    <button
-                                      class="btn btn-outline-primary mr-1"
-                                      type="button"
-                                      id="dropdownMenuButton"
-                                      data-toggle="modal"
-                                      data-target="#editarTema"
-                                      aria-expanded="false"
+                                      (click)="findByIdFuncionario(item.idFuncionario)"
                                     >
                                       Editar
                                       <i class="fa fa-pencil-square-o"></i>
@@ -540,6 +362,7 @@
                       class="close"
                       data-dismiss="modal"
                       aria-label="Close"
+
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -561,13 +384,13 @@
                           <th scope="col">Mês Referência</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody *ngFor="let item of listaFuncionarios">
                         <tr class="table">
-                          <th scope="row">Caique Bezerra</th>
-                          <td>Desenvolvedor</td>
-                          <td>123.124.125-90</td>
+                          <th scope="row"> {{ item.nome }} </th>
+                          <td> {{ item.cargo.nome }} </td>
+                          <td> {{ item.cpf }} </td>
                           <td>2.500,00</td>
-                          <td>Abril/2022</td>
+                          <td > <!-- {{ item.folhaDePagamento.mesReferencia }} --> </td>
                         </tr>
                       </tbody>
                     </table>
@@ -684,14 +507,20 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="tema">Matrícula (CPF)</label>
+                      <label for="cpf" class="ls-label">Matrícula (CPF)</label>
                       <input
-                        type="number"
+                        mask="000.000.000-99"
+                        name="cpf"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.cpf"
+                        type="text"
                         class="form-control"
-                        name="tema"
-                        id="tema"
+                        name="cpf"
+                        id="cpf"
                         rows="1"
-                        placeholder="Digite o número do cpf do funcionário"
+                        minlength="14"
+                        maxlength="14"
+                        placeholder="000.000.000-00"
                         required
                       />
                       <div class="invalid-feedback">
@@ -700,12 +529,15 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="tema">Link Foto</label>
+                      <label for="foto">Link Foto</label>
                       <input
+                        name="fotoFuncionario"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.linkFoto"
                         type="text"
                         class="form-control"
-                        name="tema"
-                        id="tema"
+                        name="foto"
+                        id="foto"
                         rows="1"
                         placeholder="Cole o link da foto aqui"
                         required
@@ -716,12 +548,15 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="tema">Nome Completo</label>
+                      <label for="nome">Nome Completo</label>
                       <input
+                        name="nomeFuncionario"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.nome"
                         type="text"
                         class="form-control"
-                        name="tema"
-                        id="tema"
+                        name="nome"
+                        id="nome"
                         rows="1"
                         placeholder="Digite o nome completo do funcionário"
                         required
@@ -732,12 +567,15 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="tema">Email</label>
+                      <label for="email">Email</label>
                       <input
+                        name="email"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.email"
                         type="text"
                         class="form-control"
-                        name="tema"
-                        id="tema"
+                        name="email"
+                        id="email"
                         rows="1"
                         placeholder="Digite o email do funcionário"
                         required
@@ -748,24 +586,52 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="tipo">Cargo:</label>
-                      <select class="form-control" name="tipo" id="tipo">
-                        <option selected disabled value="">
+                      <label for="cargo">Cargo:</label>
+                      <select
+                        class="form-control"
+                        (change)="getAllCargos()"
+                        ngDefaultControl
+                        [(ngModel)]="idCargo"
+                      >
+                        <option selected disabled value="default" name="cargo">
                           Selecione um cargo:
                         </option>
-                        <option value="padrao">Desenvolvedor</option>
-                        <option value="adm">Gerente</option>
-                        <option value="adm">Diretor</option>
+                        <option
+                          *ngFor="let item of listaCargos"
+                          value="{{ item.idCargo }}"
+                        >
+                          {{ item.nome }}
+                        </option>
                       </select>
                     </div>
 
                     <div class="form-group">
-                      <label for="tema">Quantidade Horas</label>
+                      <label for="horas">Quantidade Horas</label>
                       <input
+                        [(ngModel)]="folhaPagamento.horasTrabalhadas"
+                        ngDefaultControl
                         type="number"
                         class="form-control"
-                        name="tema"
-                        id="tema"
+                        name="horas"
+                        id="horas"
+                        rows="1"
+                        placeholder="Digite o número de horas do funcionário"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="horas">Mês Referência</label>
+                      <input
+                        [(ngModel)]="folhaPagamento.mesReferencia"
+                        ngDefaultControl
+                        type="text"
+                        class="form-control"
+                        name="mes"
+                        id="mes"
                         rows="1"
                         placeholder="Digite o número de horas do funcionário"
                         required
@@ -783,7 +649,11 @@
                     >
                       Cancelar
                     </button>
-                    <button type="button" class="btn btn-success">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="cadastrarFuncionario()"
+                    >
                       Adicionar
                     </button>
                   </div>
@@ -794,9 +664,7 @@
             <!-- Modal Novo Cargo -->
             <div class="modal fade" id="adicionarCargo" tabindex="-1">
               <div class="modal-dialog">
-                <div
-                  class="modal-content"
-                >
+                <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">Adicionar Cargo</h5>
                     <button
@@ -812,6 +680,9 @@
                     <div class="form-group">
                       <label for="tema">Nome Cargo</label>
                       <input
+                        name="nomeCargo"
+                        ngDefaultControl
+                        [(ngModel)]="cargo.nome"
                         type="text"
                         class="form-control"
                         name="tema"
@@ -821,13 +692,16 @@
                         required
                       />
                       <div class="invalid-feedback">
-                        Por favor, digite o número do cargo.
+                        Por favor, digite o nome do cargo.
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="tema">Pagamento Hora</label>
                       <input
+                        name="pgtHora"
+                        ngDefaultControl
+                        [(ngModel)]="cargo.pagamentoHora"
                         type="number"
                         class="form-control"
                         name="tema"
@@ -840,6 +714,62 @@
                         Por favor, digite o valor da hora do funcionário.
                       </div>
                     </div>
+
+                    <div class="d-flex justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-success"
+                        (click)="cadastrarCargo()"
+                      >
+                        Adicionar
+                      </button>
+                    </div>
+
+                    <hr />
+
+                    <label for="tema">Editar Cargo</label>
+                    <div class="container d-flex justify-content-center">
+                      <div
+                        class="row mt-1 mb-1 d-flex justify-content-center w-100"
+                      >
+                        <div
+                          class="col-md-12 px-0 w-100 d-flex justify-content-center"
+                        >
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col" class="text-center">
+                                  Pgt. Hora
+                                </th>
+                                <th scope="col" class="text-center">
+                                  Modificações
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of listaCargos">
+                                <th>{{ item.idCargo }}</th>
+                                <td>{{ item.nome }}</td>
+                                <td class="text-center">
+                                  {{ item.pagamentoHora }}
+                                </td>
+                                <td class="d-flex justify-content-center">
+                                  <!-- <button
+                        class="btn btn-info mr-3"
+                        (click)="findByIdTema(item.idTema)"
+                      >
+                        Editar
+                      </button> -->
+                                  <button class="btn btn-danger">Apagar</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button
@@ -849,7 +779,183 @@
                     >
                       Cancelar
                     </button>
-                    <button type="button" class="btn btn-success">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Edição Funcionário -->
+            <div class="modal fade" id="editarFuncionario" tabindex="-1">
+              <div class="modal-dialog">
+                <div
+                  class="modal-content"
+                  style="
+                    width: 80vw;
+                    height: 80vh;
+                    margin-left: -28vw;
+                    margin-top: 86px;
+                  "
+                >
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar Funcionário</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="cpf" class="ls-label">Matrícula (CPF)</label>
+                      <input
+                        mask="000.000.000-99"
+                        name="cpf"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.cpf"
+                        type="text"
+                        class="form-control"
+                        name="cpf"
+                        id="cpf"
+                        rows="1"
+                        minlength="14"
+                        maxlength="14"
+                        placeholder="000.000.000-00"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="foto">Link Foto</label>
+                      <input
+                        name="fotoFuncionario"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.linkFoto"
+                        type="text"
+                        class="form-control"
+                        name="foto"
+                        id="foto"
+                        rows="1"
+                        placeholder="Cole o link da foto aqui"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="nome">Nome Completo</label>
+                      <input
+                        name="nomeFuncionario"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.nome"
+                        type="text"
+                        class="form-control"
+                        name="nome"
+                        id="nome"
+                        rows="1"
+                        placeholder="Digite o nome completo do funcionário"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input
+                        name="email"
+                        ngDefaultControl
+                        [(ngModel)]="funcionario.email"
+                        type="text"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        rows="1"
+                        placeholder="Digite o email do funcionário"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cargo">Cargo:</label>
+                      <select
+                        class="form-control"
+                        (change)="getAllCargos()"
+                        ngDefaultControl
+                        [(ngModel)]="idCargo"
+                      >
+                        <option selected disabled value="default" name="cargo">
+                          Selecione um cargo:
+                        </option>
+                        <option
+                          *ngFor="let item of listaCargos"
+                          value="{{ item.idCargo }}"
+                        >
+                          {{ item.nome }}
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="horas">Quantidade Horas</label>
+                      <input
+                        [(ngModel)]="folhaPagamento.horasTrabalhadas"
+                        ngDefaultControl
+                        type="number"
+                        class="form-control"
+                        name="horas"
+                        id="horas"
+                        rows="1"
+                        placeholder="Digite o número de horas do funcionário"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="horas">Mês Referência</label>
+                      <input
+                        [(ngModel)]="folhaPagamento.mesReferencia"
+                        ngDefaultControl
+                        type="text"
+                        class="form-control"
+                        name="mes"
+                        id="mes"
+                        rows="1"
+                        placeholder="Digite o número de horas do funcionário"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, digite o número da matrícula.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-dismiss="modal"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="cadastrarFuncionario()"
+                    >
                       Adicionar
                     </button>
                   </div>

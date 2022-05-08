@@ -12,6 +12,7 @@
             <div class="form-group">
               <label for="email">Email</label>
               <input
+                [(ngModel)]="userLogin.email"
                 class="form-control"
                 type="text"
                 name="email"
@@ -24,6 +25,7 @@
             <div class="form-group w-50 mb-4 w-100">
               <label for="senha">Senha</label>
               <input
+                [(ngModel)]="userLogin.senha"
                 class="form-control"
                 type="password"
                 name="senha"
@@ -36,15 +38,13 @@
               </div>
             </div>
 
-
-
             <div class="d-flex justify-content-center mb-3">
-              <button type="submit" class="btn btn-primary w-100 rounded">
+              <button type="submit" class="btn btn-primary w-100 rounded" (click)="entrar()">
                 Entrar
               </button>
             </div>
             <div class="d-flex justify-content-center">
-              <small>Não tem uma conta ainda? <a href="">Cadastre-se</a></small>
+              <small>Não tem uma conta ainda? <a href="" routerLink="/cadastrar">Cadastre-se</a></small>
             </div>
           </form>
         </div>
