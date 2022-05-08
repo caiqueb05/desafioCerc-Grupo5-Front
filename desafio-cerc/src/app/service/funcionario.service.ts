@@ -26,21 +26,21 @@ export class FuncionarioService {
 
   getAllFuncionarios(): Observable<Funcionario[]> {
     return this.http.get<Funcionario[]>(
-      'http://localhost:8080/api/v1/funcionario',
+      'https://paymentsregister.herokuapp.com/api/v1/funcionario',
       this.token
     );
   }
 
   postFuncionario(funcionario: Funcionario): Observable<Funcionario> {
     return this.http.post<Funcionario>(
-      'http://localhost:8080/api/v1/funcionario',
+      'https://paymentsregister.herokuapp.com/api/v1/funcionario',
       funcionario,
       this.token
     );
   }
 
   getByIdFuncionario(id: number): Observable<Funcionario>{
-    return this.http.get<Funcionario>(`http://localhost:8080/api/v1/funcionario/${id}`, this.token)
+    return this.http.get<Funcionario>(`https://paymentsregister.herokuapp.com/api/v1/funcionario/${id}`, this.token)
   }
 
 }
